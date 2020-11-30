@@ -7,28 +7,31 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@master
-    - name: restore lerna
-        id: cache
+      - uses: actions/checkout@v2
+          with:
+            fetch-depth: '1'
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: restore
         uses: actions/cache@v2
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-    - name: install
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: yarn install --ignore-engines
+      - name: install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --ignore-engines
 
-    - name: build
-      run: yarn build
+      - name: build
+        run: yarn build
 
-    - name: test
-      run: yarn test
+      - name: test
+        run: yarn test
 
-    - name: deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
