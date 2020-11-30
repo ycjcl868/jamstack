@@ -2,7 +2,8 @@ name: Deploy website
 on:
   schedule:
     - cron: "*/5 * * * *"
-
+env:
+  TZ: Asia/Shanghai
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -13,8 +14,8 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
-      - name: restore
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
+        id: cache
         with:
           path: |
             node_modules
