@@ -3,12 +3,7 @@ name: Deploy
 on:
   schedule:
     - cron: "*/10 * * * *"
-
-env:
-  TZ: Asia/Shanghai
-
 jobs:
-
   autoDeploy:
     runs-on: ubuntu-latest
     steps:
