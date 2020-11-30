@@ -30,7 +30,7 @@ Layout.getInitialProps = (async ctx => {
     const date = dayjs(new Date())
       .tz('Asia/Shanghai')
       .locale('zh-cn')
-      .format('YYYY-MM-DDT HH:mm:ss');
+      .format('YYYY-MM-DD HH:mm:ss');
     return {
       date,
     };

@@ -14,10 +14,7 @@ export default defineConfig({
   },
   ...prefix,
   hash: true,
-  model: false,
-  initialState: false,
   exportStatic: {},
-  antd: false,
   nodeModulesTransform: {
     type: 'none',
   },
