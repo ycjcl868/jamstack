@@ -7,11 +7,11 @@ const request = extend({});
 dayjs.extend(relativeTime);
 
 const Home = props => {
-  const { hot = [] } = props;
+  const { latest = [] } = props;
   return (
     <div>
       <ul className="divide-y divide-gray-100">
-        {hot.map(recipe => {
+        {latest.map(recipe => {
           const time = dayjs
             .unix(recipe.last_touched)
             .locale('zh-cn')
@@ -69,8 +69,8 @@ const Home = props => {
 Home.getInitialProps = (async ctx => {
   if (ctx.isServer) {
     try {
-      const result = await request('https://www.v2ex.com/api/topics/hot.json');
-      const hot = result.map(item => ({
+      const result = await request('https://www.v2ex.com/api/topics/latest.json');
+      const latest = result.map(item => ({
         id: item.id,
         title: item.title,
         avatar: item.node.avatar_large,
@@ -82,7 +82,7 @@ Home.getInitialProps = (async ctx => {
       }));
 
       return {
-        hot,
+        latest,
       };
     } catch (e) {
       console.error('[Error]', e);
