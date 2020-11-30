@@ -2,8 +2,10 @@ name: Deploy website
 on:
   schedule:
     - cron: "*/5 * * * *"
+
 env:
   TZ: Asia/Shanghai
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
