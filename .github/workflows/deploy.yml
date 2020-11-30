@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/3 * * * *"
 jobs:
   autoDeploy:
     runs-on: ubuntu-latest
