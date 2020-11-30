@@ -1,4 +1,4 @@
-name: Deploy website
+name: Deploy
 
 on:
   schedule:
@@ -8,6 +8,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
+
   autoDeploy:
     runs-on: ubuntu-latest
     steps:
