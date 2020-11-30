@@ -19,7 +19,7 @@ const Layout: React.FunctionComponent<LayoutProps> = props => {
   return (
     <>
       <Header />
-      <div className="xl:max-w-2xl mx-auto">{props.children}</div>
+      <div className="xl:max-w-2xl mx-auto mt-24">{props.children}</div>
       <Footer date={props.date} />
     </>
   );
