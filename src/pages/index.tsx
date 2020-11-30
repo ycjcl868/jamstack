@@ -47,10 +47,6 @@ const Home = props => {
                     <dt className="sr-only">Difficulty</dt>
                     <dd> · {recipe?.difficulty}</dd>
                   </div>
-                  <div>
-                    <dt className="sr-only">Servings</dt>
-                    <dd> · {recipe?.servings} servings</dd>
-                  </div>
                   <div className="flex-none w-full mt-0.5 font-normal">
                     <dt className="inline">By</dt>{' '}
                     <dd className="inline text-black">{recipe.member}</dd>
