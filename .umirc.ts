@@ -4,7 +4,7 @@ export default defineConfig({
   ssr: {
     staticMarkup: true,
   },
-  publicPath: process.env.NODE_ENV === 'production' ? '/jamstack-umi/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/jamstack-umi/' : '/',
   hash: true,
   model: false,
   initialState: false,
