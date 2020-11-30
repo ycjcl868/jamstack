@@ -27,6 +27,8 @@ jobs:
 
       - name: build
         run: yarn build
+        env:
+          - GH_PAGES: true
 
       - name: test
         run: yarn test

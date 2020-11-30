@@ -1,10 +1,18 @@
 import { defineConfig } from 'umi';
 
+const prefix =
+  process.env.GH_PAGES && process.env.NODE_ENV === 'production'
+    ? {
+        base: '/jamstack-umi/',
+        publicPath: '/jamstack-umi/',
+      }
+    : {};
+
 export default defineConfig({
   ssr: {
     staticMarkup: true,
   },
-  base: process.env.NODE_ENV === 'production' ? '/jamstack-umi/' : '/',
+  ...prefix,
   hash: true,
   model: false,
   initialState: false,
