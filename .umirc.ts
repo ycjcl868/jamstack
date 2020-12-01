@@ -9,6 +9,7 @@ const prefix =
     : {};
 
 export default defineConfig({
+  plugins: ['./corejs-plugin'],
   ssr: {
     staticMarkup: true,
   },
