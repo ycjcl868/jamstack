@@ -1,4 +1,4 @@
-import { IGetInitialProps } from 'umi';
+import { IGetInitialProps, isBrowser } from 'umi';
 import { extend } from 'umi-request';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -12,10 +12,12 @@ const Home = props => {
     <div>
       <ul className="divide-y divide-gray-100">
         {latest.map(recipe => {
-          const time = dayjs
-            .unix(recipe.last_touched)
-            .locale('zh-cn')
-            .fromNow();
+          const time = isBrowser()
+            ? dayjs
+                .unix(recipe.last_touched)
+                .locale('zh-cn')
+                .fromNow()
+            : null;
           return (
             <article key={recipe.id} className="p-4 flex space-x-4">
               <img
@@ -39,9 +41,11 @@ const Home = props => {
                 <dl className="flex flex-wrap text-sm font-medium whitespace-pre">
                   <div>
                     <dt className="sr-only">Time</dt>
-                    <dd>
-                      <abbr title={time}>{time}</abbr>
-                    </dd>
+                    {time && (
+                      <dd>
+                        <abbr title={time}>{time}</abbr>
+                      </dd>
+                    )}
                   </div>
                   <div>
                     <dt className="sr-only">Difficulty</dt>
@@ -69,7 +73,9 @@ const Home = props => {
 Home.getInitialProps = (async ctx => {
   if (ctx.isServer) {
     try {
-      const result = await request('https://www.v2ex.com/api/topics/latest.json');
+      const result = await request(
+        'https://www.v2ex.com/api/topics/latest.json',
+      );
       const latest = result.map(item => ({
         id: item.id,
         title: item.title,
