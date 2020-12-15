@@ -1,21 +1,14 @@
 import { defineConfig } from 'umi';
 
-const prefix =
-  process.env.GH_PAGES && process.env.NODE_ENV === 'production'
-    ? {
-        base: '/jamstack-umi/',
-        publicPath: '/jamstack-umi/',
-      }
-    : {};
-
 export default defineConfig({
   plugins: ['./corejs-plugin'],
   ssr: {
     staticMarkup: true,
   },
-  ...prefix,
   hash: true,
-  exportStatic: {},
+  exportStatic: {
+    dynamicRoot: true,
+  },
   nodeModulesTransform: {
     type: 'none',
   },
