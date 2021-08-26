@@ -31,11 +31,12 @@ export default function Home(props) {
               return (
                 <a
                   key={`${item.id}`}
-                  href="https://nextjs.org/docs"
+                  href={item.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={styles.card}
                 >
                   <h2>{item.title}</h2>
-                  <p>Created by {item.user.login}</p>
                 </a>
               );
             })
@@ -56,7 +57,7 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    'https://api.github.com/repos/ycjcl868/jamstack/issues',
+    'https://api.github.com/repos/ycjcl868/jamstack/issues?state=open',
   );
   const data = await res.json();
 
