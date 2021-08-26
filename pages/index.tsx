@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
+import ReactUtterances from '../components/ReactUtterances';
 import styles from '../styles/Home.module.css';
 
 export default function Home(props) {
@@ -40,6 +41,14 @@ export default function Home(props) {
             })
           )}
         </div>
+        <footer className={styles.footer}>
+          <ReactUtterances
+            repo="ycjcl868/jamstack"
+            issueMap="issue-term"
+            issueTerm="title"
+            theme={'github-light'}
+          />
+        </footer>
       </main>
     </div>
   );

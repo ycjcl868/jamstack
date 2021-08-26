@@ -1,0 +1,11 @@
+
+.comments {
+  width: 100%;
+  margin-top: 2em;
+  border-top: 1px solid var(--bg-color-0);
+}
+
+.utterances {
+  margin-top: 2em;
+  width: 100%;
+}
