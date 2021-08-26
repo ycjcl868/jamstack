@@ -18,8 +18,12 @@ export default function Home(props) {
         <h1 className={styles.title}>Welcome to Jamstack!</h1>
         <p>
           Please go to{' '}
-          <a href="https://github.com/ycjcl868/jamstack/issues">
-            https://github.com/ycjcl868/jamstack/issues
+          <a
+            href="https://github.com/ycjcl868/jamstack/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            issues
           </a>
         </p>
 
